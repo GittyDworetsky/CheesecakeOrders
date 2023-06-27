@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import dayjs from 'dayjs';
 
 const ViewOrders = () => {
 
@@ -34,7 +36,7 @@ const ViewOrders = () => {
                     {orders.map(order => (
                         <tr key={order.id} style={{backgroundColor: "#f8f9fa", borderRadius: "15px"}}>
                             <td style={{paddingTop: "15px", paddingBottom: "15px"}}>
-                                <Link to={`/order-details/${order.id}`}>
+                                <Link to={`/OrderDetails/${order.id}`}>
                                     {order.name} - {order.email}
                                 </Link>
                             </td>

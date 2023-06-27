@@ -39,10 +39,16 @@ const CreateOrder = () => {
 
     const onSubmitClick = async () => {
 
-        await axios.post('/api/home/add', { person, email, base, toppings: selectedToppings.join(', '), specialRequests, quantity, deliveryDate, total: computeTotal()});
+        await axios.post('/api/home/add', { person, email, baseFlavor: base, toppings: selectedToppings.join(', '), specialRequests, quantity, deliveryDate, total: computeTotal()});
         navigate('/success');
 
     }
+
+    const onPersonChange = (e) => {
+        setPerson(e.target.value);
+    }
+
+    
 
     const onToppingsChange = (topping) => {
         if (selectedToppings.includes(topping)) {
@@ -67,7 +73,7 @@ const CreateOrder = () => {
                 <div className="col-md-6">
                     <div className="mb-3">
                         <label className="form-label">Name</label>
-                        <input value={person} onChange={e => setPerson(e.target.value)} type="text" className="form-control" />
+                        <input value={person} onChange={onPersonChange} type="text" className="form-control" />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Email</label>
@@ -113,7 +119,7 @@ const CreateOrder = () => {
                 <div className="col-md-6 position-sticky">
                     <h2 className="mb-4">Live Preview</h2>
                     <div className="card">
-                        <img src="/cheesecake.jpg" className="card-img-top" alt="Cheesecake" />
+                        <img src="/cheesecake image.jpg" className="card-img-top" alt="Cheesecake" />
                         <div className="card-body">
                             <h5 className="card-title"> {person}{(!!person ? "'s" : " ")} Custom Cheesecake</h5>
                             <p className="card-text">Base: {base}</p>
@@ -121,7 +127,7 @@ const CreateOrder = () => {
                             <p className="card-text">Special Requests: {specialRequests}</p>
                             <p className="card-text">Quantity: {quantity}</p>
                             <p className="card-text">Delivery Date: {dayjs(deliveryDate).format("MM/DD/YYYY")}</p>
-                            <p className="card-text fw-bold">Total: {computeTotal()}</p>
+                            <p className="card-text fw-bold">Total: {`$${computeTotal().toFixed(2)}`}</p>
                         </div>
                     </div>
                 </div>

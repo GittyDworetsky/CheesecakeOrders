@@ -4,6 +4,7 @@ using CheesecakeOrders.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CheesecakeOrders.Data.Migrations
 {
     [DbContext(typeof(CheesecakeOrdersDbContext))]
-    partial class CheesecakeOrdersDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230627192937_fixed total")]
+    partial class fixedtotal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

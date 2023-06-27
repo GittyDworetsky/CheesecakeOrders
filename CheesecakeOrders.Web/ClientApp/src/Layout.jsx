@@ -7,7 +7,7 @@ const Layout = (props) => {
             <header>
                 <nav className="navbar navbar-expand-sm navbar-dark fixed-top bg-dark border-bottom box-shadow">
                     <div className="container">
-                        <a className="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">React People Cars</a>
+                        <a className="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">The Cheesecake Factory</a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@ const Layout = (props) => {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/orders' className='nav-link text-light'>
+                                    <Link to='/ViewOrders' className='nav-link text-light'>
                                         Orders
                                     </Link>
                                 </li>

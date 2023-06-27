@@ -21,6 +21,15 @@ namespace CheesecakeOrders.Data
             optionsBuilder.UseSqlServer(_connectionString);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Total)
+                .HasColumnType("decimal(18, 2)");
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<Order> Orders { get; set; }
 
     }

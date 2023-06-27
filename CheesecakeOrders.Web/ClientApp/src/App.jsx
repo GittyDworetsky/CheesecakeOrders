@@ -7,6 +7,7 @@ import Home from './Home';
 import CreateOrder from './CreateOrder';
 import ViewOrders from './ViewOrders';
 import Success from './Success';
+import OrderDetails from './OrderDetails';
 
 
 class App extends React.Component {
@@ -20,7 +21,7 @@ class App extends React.Component {
                     <Route exact path='/CreateOrder' element={<CreateOrder />} />
                     <Route exact path='/ViewOrders' element={<ViewOrders />} />
                     <Route exact path='/success' element={<Success />} />
-                    {/*<Route exact path='/orderdetails/:Id' element={<OrderDetails />} /> */}
+                    <Route exact path='/OrderDetails/:id' element={<OrderDetails />} /> 
                 </Routes>
             </Layout>
         );
