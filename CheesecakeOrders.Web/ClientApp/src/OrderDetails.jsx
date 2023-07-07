@@ -8,13 +8,14 @@ import { Link } from 'react-router-dom';
 const OrderDetails = () => {
 
     
-    const [order, setOrder] = useState();
+    const [order, setOrder] = useState({});
     const {id} = useParams();
 
     useEffect(() => {
         const getOrder = async () => {
             const { data } = await axios.get(`/api/home/getbyid?id=${id}`);
             setOrder(data);
+            console.log(data);
         }
 
         getOrder();
@@ -24,7 +25,7 @@ const OrderDetails = () => {
         <div className="d-flex align-items-center justify-content-center" style={{ height: "80vh" }}>
             <div className="card text-center shadow p-3 mb-5 bg-body rounded" style={{ width: "30rem", backgroundColor: "#f8f9fa" }}>
                 <div className="card-body">
-                    <h3 className="card-title fw-bold">{order.person}</h3>
+                    <h3 className="card-title fw-bold">{order.name}</h3>
                     <p className="card-text fs-5">{order.email}</p>
                     <p className="card-text fs-5">{order.baseFlavor}</p>
                     <p className="card-text fs-5">{order.toppings || 'N/A'}</p>

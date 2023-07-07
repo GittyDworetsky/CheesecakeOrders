@@ -25,7 +25,7 @@ const toppings = [
 
 const CreateOrder = () => {
 
-    const [person, setPerson] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [base, setBase] = useState(baseFlavors[0]);
     const [selectedToppings, setSelectedToppings] = useState([]);
@@ -34,18 +34,18 @@ const CreateOrder = () => {
     const [deliveryDate, setDeliveryDate] = useState('');
 
     const navigate = useNavigate();
-    const isFormValid = !!person && !!email && base !== baseFlavors[0] && +quantity > 0 && !!deliveryDate;
+    const isFormValid = !!name && !!email && base !== baseFlavors[0] && +quantity > 0 && !!deliveryDate;
 
 
     const onSubmitClick = async () => {
 
-        await axios.post('/api/home/add', { person, email, baseFlavor: base, toppings: selectedToppings.join(', '), specialRequests, quantity, deliveryDate, total: computeTotal()});
+        await axios.post('/api/home/add', { name, email, baseFlavor: base, toppings: selectedToppings.join(', '), specialRequests, quantity, deliveryDate, total: computeTotal()});
         navigate('/success');
 
     }
 
-    const onPersonChange = (e) => {
-        setPerson(e.target.value);
+    const onNameChange = (e) => {
+        setName(e.target.value);
     }
 
     
@@ -73,7 +73,7 @@ const CreateOrder = () => {
                 <div className="col-md-6">
                     <div className="mb-3">
                         <label className="form-label">Name</label>
-                        <input value={person} onChange={onPersonChange} type="text" className="form-control" />
+                        <input value={name} onChange={onNameChange} type="text" className="form-control" />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Email</label>
@@ -121,7 +121,7 @@ const CreateOrder = () => {
                     <div className="card">
                         <img src="/cheesecake image.jpg" className="card-img-top" alt="Cheesecake" />
                         <div className="card-body">
-                            <h5 className="card-title"> {person}{(!!person ? "'s" : " ")} Custom Cheesecake</h5>
+                            <h5 className="card-title"> {name}{(!!name ? "'s" : " ")} Custom Cheesecake</h5>
                             <p className="card-text">Base: {base}</p>
                             <p className="card-text">Toppings: {selectedToppings.join(',')}</p>
                             <p className="card-text">Special Requests: {specialRequests}</p>

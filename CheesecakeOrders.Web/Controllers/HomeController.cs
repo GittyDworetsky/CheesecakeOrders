@@ -1,5 +1,4 @@
 ﻿using CheesecakeOrders.Data;
-using CheesecakeOrders.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,10 +34,10 @@ namespace CheesecakeOrders.Web.Controllers
 
         [HttpGet]
         [Route("getbyid")]
-        public Order GetById(GetByIdViewModel vm)
+        public Order GetById(int id)
         {
             CheesecakeOrdersRepository repo = new CheesecakeOrdersRepository(_connectionString);
-            return repo.GetById(vm.Id);
+            return repo.GetById(id);
 
         }
     }
